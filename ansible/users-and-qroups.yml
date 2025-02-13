@@ -11,31 +11,31 @@
         groups: "{{ item.group }}"
         state: present
       with_items:
-        - user1:
+        - usr:
             user: Annabelle
             group: Sales
-        - user2:
+        - usr:
             user: Bob
             group: IT
-        - user3:
+        - usr:
             user: Carl
             group: Support
-        - user4:
+        - usr:
             user: Dyson
             group: Evert
-        - user5:
+        - usr:
             user: Frank
             group: Sales
-        - user6:
+        - usr:
             user: Gerry
             group: Support
-        - user7:
+        - usr:
             user: Harold
             group: IT
-        - user8:
+        - usr:
             user: Isabella
             group: Services
-        - user9:
+        - usr:
             user: Jameson
             group: Services
 
