@@ -23,6 +23,32 @@
         name: chronyd
         enabled: yes
         state: started
+    
+    - name: Install Cockpit
+      package:
+        name: cockpit
+        state: present
+
+    - name: Ensure Cockpit is running and enabled
+      service:
+        name: cockpit
+        enabled: yes
+        state: started
+
+    - name: Ensure log file exists
+      file:
+        path: /var/log/automation.log
+        state: touch
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Schedule task "runningaway" to log Cockpit status
+      cron:
+        name: "runningaway"
+        minute: "*/5"
+        job: "echo \"$(date) - Cockpit Service Status: $(systemctl is-active cockpit)\" >> /var/log/automation.log"
+
 
   handlers:
     - name: Restart Chrony
