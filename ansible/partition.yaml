@@ -20,6 +20,11 @@
         number: 1
         state: present
 
+    - name: Create filesystem 
+      community.general.filesystem:
+        fstype: xfs
+        dev: /dev/nvme1n1
+
     - shell: ls -l /dev/nvme*
       register: nvme
 
