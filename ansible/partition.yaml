@@ -1,0 +1,25 @@
+---
+- name: Create partitions
+  hosts: localhost
+  tasks:
+    - name: Create partition
+      community.general.parted:
+          device: /dev/nvme1n1
+          number: 1
+          state: present
+          fs_type: xfs
+
+    - name: Configure fstab
+      ansible.posix.mount:
+          path: /extdrive
+          src: /dev/nvme1n1
+          fstype: xfs
+          opts: noatime
+          state: present
+
+    - name: Configure permissions
+      ansible.builtin.file:
+          path: /extdrive
+          state: directory
+          recurse: yes
+          group: IT
