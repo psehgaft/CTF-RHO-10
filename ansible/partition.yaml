@@ -16,9 +16,8 @@
     - name: Configure fstab
       ansible.posix.mount:
           path: /extdrive
-          src: /dev/nvme1n1
+          src: /dev/nvme1n1p1
           fstype: xfs
-          opts: noatime
           state: mounted
 
     - shell: mount
