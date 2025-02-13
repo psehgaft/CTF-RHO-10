@@ -1,0 +1,23 @@
+---
+- name: ":::: Users and Groups playbook ::::"
+  hosts: all
+  become: true
+  tasks:     
+    
+    - name: Using users with loop
+      user:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - Annabelle
+        - Bob
+        - Carl
+        - Dyson
+        - Evert
+        - Frank
+        - Gerry
+        - Harold
+        - Isabella
+        - Jameson
+
+  
