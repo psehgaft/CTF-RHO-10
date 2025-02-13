@@ -17,6 +17,9 @@
 
     - name: lala
       shell: cat /etc/group*
+      register: lala
+
+    - debug: "{{ lala }}"
 
     - name: Configure permissions
       ansible.builtin.file:
