@@ -6,7 +6,8 @@
     
     - name: Using users with loop
       user:
-        name: "{{ item.name }}"
+        name: "{{ item.user }}"
+        ssh_key_file: id_rsa
         group: "{{ item.group }}"
         state: present
       with_items:
