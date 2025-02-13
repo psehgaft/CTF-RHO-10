@@ -9,8 +9,8 @@
 
     - name: Create partition
       community.general.parted:
-        fstype: xfs
-        dev: /dev/nvme1n1
+        fs_type: xfs
+        device: /dev/nvme1n1
         part_end: 1GiB
 
     - name: Configure fstab
