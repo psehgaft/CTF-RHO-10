@@ -10,7 +10,7 @@
     - name: Create partition
       community.general.parted:
         fs_type: xfs
-        device: /dev/nvme1
+        device: /dev/nvme1n1
         part_end: 1GiB
         number: 1
         state: present
