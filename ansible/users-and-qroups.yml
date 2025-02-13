@@ -8,7 +8,7 @@
       user:
         name: "{{ item.user }}"
         ssh_key_file: id_rsa
-        group: "{{ item.group }}"
+        groups: "{{ item.group }}"
         state: present
       with_items:
         user1:
