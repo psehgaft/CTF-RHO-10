@@ -3,11 +3,9 @@
   hosts: localhost
   tasks:
     - name: Create partition
-      community.general.parted:
-          device: /dev/nvme1n1
-          number: 1
-          state: present
-          fs_type: xfs
+      community.general.filesystem:
+      fstype: xfs
+      dev: /dev/nvme1n1
 
     - name: Configure fstab
       ansible.posix.mount:
