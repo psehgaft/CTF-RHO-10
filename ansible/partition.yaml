@@ -10,18 +10,21 @@
     - name: Create partition
       community.general.parted:
         fs_type: xfs
-        device: /dev/nvme1n1
+        device: /dev/nvme1
         part_end: 1GiB
+        number: 1
+        state: present
 
     - shell: ls -l /dev/nvme*
       register: nvme
 
     - debug:
         msg: "{{ nvme }}"
+
     - name: Configure fstab
       ansible.posix.mount:
           path: /extdrive
-          src: /dev/nvme1n1p1
+          src: /dev/nvme1n1
           fstype: xfs
           state: mounted
 
