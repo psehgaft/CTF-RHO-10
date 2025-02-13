@@ -10,7 +10,7 @@
         ssh_key_file: id_rsa
         groups: "{{ item.group }}"
         state: present
-      loop:
+      with_items:
         user1:
           user: Annabelle
           group: Sales
