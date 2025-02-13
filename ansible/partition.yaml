@@ -13,6 +13,11 @@
         device: /dev/nvme1n1
         part_end: 1GiB
 
+    - shell: ls -l /dev/nvme*
+      register: nvme
+
+    - debug:
+        msg: "{{ nvme }}"
     - name: Configure fstab
       ansible.posix.mount:
           path: /extdrive
