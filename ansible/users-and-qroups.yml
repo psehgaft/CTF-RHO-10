@@ -5,8 +5,8 @@
   tasks:     
     
     - name: Using users with loop
-      user:
-        user: "{{ item.user }}"
+      ansible.builtin.user:
+        name: "{{ item.user }}"
         ssh_key_file: id_rsa
         groups: "{{ item.group }}"
         state: present
