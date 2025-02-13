@@ -44,11 +44,11 @@
           fstype: xfs
           state: mounted
 
-    - shell: mount
+    - shell: cat /etc/fstab
       register: mount
 
     - debug:
-        msg: "{{ mount }}"
+        msg: "{{ mount.stdout }}"
 
     - name: Configure permissions
       ansible.builtin.file:
