@@ -10,33 +10,13 @@
         ssh_key_file: id_rsa
         groups: "{{ item.group }}"
         state: present
-      with_items:
-        - usr:
-            user: Annabelle
-            group: Sales
-        - usr:
-            user: Bob
-            group: IT
-        - usr:
-            user: Carl
-            group: Support
-        - usr:
-            user: Dyson
-            group: Evert
-        - usr:
-            user: Frank
-            group: Sales
-        - usr:
-            user: Gerry
-            group: Support
-        - usr:
-            user: Harold
-            group: IT
-        - usr:
-            user: Isabella
-            group: Services
-        - usr:
-            user: Jameson
-            group: Services
-
-  
+      loop:
+        - { user: Annabelle, group: Sales }
+        - { user: Bob, group: IT }
+        - { user: Carl, group: Support }
+        - { user: Dyson, group: Evert }
+        - { user: Frank, group: Sales }
+        - { user: Gerry, group: Support }
+        - { user: Harold, group: IT }
+        - { user: Isabella, group: Services }
+        - { user: Jameson, group: Services }
