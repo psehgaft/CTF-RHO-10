@@ -1,6 +1,6 @@
 ---
 - name: Create partitions
-  hosts: localhost
+  hosts: server2
   tasks:
     - name: Create partition
       community.general.filesystem:
