@@ -13,7 +13,7 @@
       with_items:
         - user1:
             user: Annabelle
-          group: Sales
+            group: Sales
         - user2:
             user: Bob
             group: IT
