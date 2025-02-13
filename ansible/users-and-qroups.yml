@@ -5,6 +5,16 @@
   tasks:     
     
     - name: Using users with loop
+      ansible.builtin.group:
+        name: "{{ item.group }}"
+        state: present
+      loop:
+        - { user: Annabelle, group: Sales }
+        - { user: Bob, group: IT }
+        - { user: Carl, group: Support }
+        - { user: Isabella, group: Services }
+
+    - name: Using users with loop
       ansible.builtin.user:
         name: "{{ item.user }}"
         ssh_key_file: id_rsa
@@ -14,7 +24,8 @@
         - { user: Annabelle, group: Sales }
         - { user: Bob, group: IT }
         - { user: Carl, group: Support }
-        - { user: Dyson, group: Evert }
+        - { user: Dyson, group: Support }
+        - { user: Evert, group: IT }
         - { user: Frank, group: Sales }
         - { user: Gerry, group: Support }
         - { user: Harold, group: IT }
