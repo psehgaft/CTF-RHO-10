@@ -7,6 +7,11 @@
         name: parted
         state: present
 
+    - name: Unmount a mounted volume
+      ansible.posix.mount:
+        path: /extdrive
+        state: unmounted
+
     - name: Create partition
       community.general.parted:
         fs_type: xfs
