@@ -6,18 +6,36 @@
     
     - name: Using users with loop
       user:
-        name: "{{ item }}"
+        name: "{{ item.name }}"
+        group: "{{ item.group }}"
         state: present
       with_items:
-        - Annabelle
-        - Bob
-        - Carl
-        - Dyson
-        - Evert
-        - Frank
-        - Gerry
-        - Harold
-        - Isabella
-        - Jameson
+        user1:
+          user: Annabelle
+          group: Sales
+        user2:
+          user: Bob
+          group: IT
+        user3:
+          user: Carl
+          group: Support
+        user4:
+          user: Dyson
+          group: Evert
+        user5:
+          user: Frank
+          group: Sales
+        user6:
+          user: Gerry
+          group: Support
+        user7:
+          user: Harold
+          group: IT
+        user8:
+          user: Isabella
+          group: Services
+        user9:
+          user: Jameson
+          group: Services
 
   
