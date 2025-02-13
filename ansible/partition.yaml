@@ -4,8 +4,8 @@
   tasks:
     - name: Create partition
       community.general.filesystem:
-      fstype: xfs
-      dev: /dev/nvme1n1
+        fstype: xfs
+        dev: /dev/nvme1n1
 
     - name: Configure fstab
       ansible.posix.mount:
