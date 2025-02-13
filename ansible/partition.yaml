@@ -2,10 +2,16 @@
 - name: Create partitions
   hosts: server2
   tasks:
+    - name: Install tools
+      ansible.builtin.dnf:
+        name: parted
+        state: present
+
     - name: Create partition
-      community.general.filesystem:
+      community.general.parted:
         fstype: xfs
         dev: /dev/nvme1n1
+        part_end: 1GiB
 
     - name: Configure fstab
       ansible.posix.mount:
@@ -14,13 +20,6 @@
           fstype: xfs
           opts: noatime
           state: present
-
-    - name: lala
-      shell: cat /etc/group*
-      register: lala
-
-    - debug: 
-        msg: "{{ lala }}"
 
     - name: Configure permissions
       ansible.builtin.file:
