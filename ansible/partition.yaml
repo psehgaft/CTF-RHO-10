@@ -21,6 +21,12 @@
           opts: noatime
           state: present
 
+    - shell: mount
+      register: mount
+
+    - debug:
+        msg: "{{ mount }}"
+
     - name: Configure permissions
       ansible.builtin.file:
           path: /extdrive
