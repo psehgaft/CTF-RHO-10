@@ -1,0 +1,31 @@
+---
+- name: Configure NTP Client with Chrony
+  hosts: server2
+  become: true
+  tasks:
+
+    - name: Install Chrony (NTP client)
+      package:
+        name: chrony
+        state: present
+
+    - name: Configure Chrony to use 3.north-america.pool.ntp.org
+      template:
+        src: chrony_client.conf.j2
+        dest: /etc/chrony.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart Chrony
+
+    - name: Enable and Start Chrony Service
+      service:
+        name: chronyd
+        enabled: yes
+        state: started
+
+  handlers:
+    - name: Restart Chrony
+      service:
+        name: chronyd
+        state: restarted

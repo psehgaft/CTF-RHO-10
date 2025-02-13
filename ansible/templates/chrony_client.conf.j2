@@ -1,0 +1,20 @@
+# Chrony configuration for NTP Client
+
+# Use only this specific NTP server
+server 3.north-america.pool.ntp.org iburst
+
+# Local clock settings (optional, fallback only)
+stratumweight 0
+
+# Specify drift file
+driftfile /var/lib/chrony/drift
+
+# Log location
+logdir /var/log/chrony
+
+# Allow Chrony to be queried
+allow
+
+# Specify which interfaces to listen on (optional)
+bindcmdaddress 127.0.0.1
+bindcmdaddress ::1
