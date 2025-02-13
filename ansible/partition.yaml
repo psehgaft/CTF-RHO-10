@@ -19,7 +19,7 @@
           src: /dev/nvme1n1
           fstype: xfs
           opts: noatime
-          state: present
+          state: mounted
 
     - shell: mount
       register: mount
