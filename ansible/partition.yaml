@@ -31,12 +31,6 @@
         fstype: xfs
         dev: /dev/nvme1n1
 
-    - shell: ls -l /dev/nvme*
-      register: nvme
-
-    - debug:
-        msg: "{{ nvme }}"
-
     - name: Configure fstab
       ansible.posix.mount:
           path: /extdrive
@@ -44,11 +38,10 @@
           fstype: xfs
           state: mounted
 
-    - shell: cat /etc/fstab
-      register: mount
-
-    - debug:
-        msg: "{{ mount.stdout }}"
+    - name: Add group if it doesn't exist 
+      ansible.builtin.group:
+        name: IT
+        state: present
 
     - name: Configure permissions
       ansible.builtin.file:
