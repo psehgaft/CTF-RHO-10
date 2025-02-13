@@ -15,6 +15,9 @@
           opts: noatime
           state: present
 
+    - name: lala
+      shell: cat /etc/group*
+
     - name: Configure permissions
       ansible.builtin.file:
           path: /extdrive
